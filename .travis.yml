@@ -2,5 +2,5 @@ language: java
 jdk:
   - oraclejdk8
 before_install:
-- mysql -u root -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('')"
+- mysql -u root -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('root')"
 
