@@ -1,3 +1,5 @@
+#workaround to build travis
+dist: precise
 language: java
 jdk:
   - oraclejdk8
