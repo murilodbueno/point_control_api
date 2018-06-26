@@ -4,6 +4,6 @@ jdk:
 services:
   - mysql
 before_install:
-- mysql -e 'CREATE DATABASE db_point_control;'
+- mysql -e 'CREATE DATABASE IF NOT EXISTS db_point_control;'
 - mysql -u root -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('root')"
 
