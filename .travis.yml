@@ -1,6 +1,6 @@
 language: java
 jdk:
   - oraclejdk8
-#workaround to build travis
-dist: precise
-sudo: false
+before_install:
+- mysql -u root -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('')"
+
