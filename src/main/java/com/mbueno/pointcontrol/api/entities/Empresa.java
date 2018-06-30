@@ -1,10 +1,9 @@
 package com.mbueno.pointcontrol.api.entities;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-
-import javax.persistence.*;
 
 @Entity
 @Table(name = "empresa")
