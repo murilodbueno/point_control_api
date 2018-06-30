@@ -8,5 +8,6 @@ public class PointControlApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(PointControlApplication.class, args);
+
 	}
 }
