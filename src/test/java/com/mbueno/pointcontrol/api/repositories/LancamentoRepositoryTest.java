@@ -4,9 +4,6 @@ import com.mbueno.pointcontrol.api.DataForTests;
 import com.mbueno.pointcontrol.api.entities.Empresa;
 import com.mbueno.pointcontrol.api.entities.Funcionario;
 import com.mbueno.pointcontrol.api.entities.Lancamento;
-import com.mbueno.pointcontrol.api.enums.PerfilEnum;
-import com.mbueno.pointcontrol.api.enums.TipoEnum;
-import com.mbueno.pointcontrol.api.utils.PasswordUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -18,8 +15,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.math.BigDecimal;
-import java.util.Date;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;

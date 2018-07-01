@@ -3,8 +3,6 @@ package com.mbueno.pointcontrol.api.repositories;
 import com.mbueno.pointcontrol.api.DataForTests;
 import com.mbueno.pointcontrol.api.entities.Empresa;
 import com.mbueno.pointcontrol.api.entities.Funcionario;
-import com.mbueno.pointcontrol.api.enums.PerfilEnum;
-import com.mbueno.pointcontrol.api.utils.PasswordUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,10 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import javax.xml.crypto.Data;
-import java.math.BigDecimal;
-import java.util.Date;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
