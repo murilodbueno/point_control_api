@@ -49,6 +49,8 @@ public class LancamentoRepositoryTest extends DataForTests{
     @After
     public void tearDown() throws Exception{
         this.empresaRepository.deleteAll();
+        this.funcionarioRepository.deleteAll();
+        this.lancamentoRepository.deleteAll();
     }
 
     @Test

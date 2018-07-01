@@ -35,6 +35,7 @@ public class FuncionarioRepositoryTest extends DataForTests{
     @After
     public final void tearDown(){
         this.empresaRepository.deleteAll();
+        this.funcionarioRepository.deleteAll();
     }
 
     @Test
