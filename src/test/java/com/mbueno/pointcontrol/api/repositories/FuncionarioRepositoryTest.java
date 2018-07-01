@@ -1,8 +1,8 @@
 package com.mbueno.pointcontrol.api.repositories;
 
-import com.mbueno.pointcontrol.api.DataForTests;
 import com.mbueno.pointcontrol.api.entities.Empresa;
 import com.mbueno.pointcontrol.api.entities.Funcionario;
+import com.mbueno.pointcontrol.api.mock.DataForTests;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

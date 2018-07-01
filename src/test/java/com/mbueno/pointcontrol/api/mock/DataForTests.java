@@ -1,4 +1,4 @@
-package com.mbueno.pointcontrol.api;
+package com.mbueno.pointcontrol.api.mock;
 
 import com.mbueno.pointcontrol.api.entities.Empresa;
 import com.mbueno.pointcontrol.api.entities.Funcionario;
