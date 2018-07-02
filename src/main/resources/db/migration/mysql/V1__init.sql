@@ -18,9 +18,9 @@ CREATE TABLE `funcionario` (
   `data_atualizacao` DATETIME NOT NULL,
   `data_criacao` DATETIME NOT NULL,
   `perfil` VARCHAR(255) NOT NULL,
-  `qtd_horas_almoco` FLOAT NOT NULL,
-  `qtd_horas_trabalho_dia` FLOAT NOT NULL,
-  `empresa_id` BIGINT(20) NOT NULL,
+  `qtd_horas_almoco` FLOAT DEFAULT NULL,
+  `qtd_horas_trabalho_dia` DEFAULT NULL,
+  `empresa_id` BIGINT(20) DEFAULT NULL,
    primary key (`id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -29,10 +29,10 @@ CREATE TABLE `lancamento` (
   `data` DATETIME NOT NULL,
   `data_atualizacao` DATETIME NOT NULL,
   `data_criacao` DATETIME NOT NULL,
-  `descricao` VARCHAR(255) NOT NULL,
-  `localizacao` VARCHAR(255) NOT NULL,
+  `descricao` VARCHAR(255) DEFAULT NULL,
+  `localizacao` VARCHAR(255) DEFAULT NULL,
   `tipo` VARCHAR(255) NOT NULL,
-  `funcionario_id` BIGINT(20) NOT NULL,
+  `funcionario_id` BIGINT(20) DEFAULT NULL,
   primary key (`id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

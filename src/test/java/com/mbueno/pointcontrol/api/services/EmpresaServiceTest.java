@@ -13,7 +13,10 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Optional;
+
 import static junit.framework.TestCase.assertNotNull;
+import static junit.framework.TestCase.assertTrue;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -36,8 +39,8 @@ public class EmpresaServiceTest {
 
     @Test
     public void testBuscarEmpresaPorCnpj(){
-        Empresa empresa = empresaService.buscarPorCnpj(CNPJ);
-        assertNotNull(empresa);
+        Optional<Empresa> empresa = empresaService.buscarPorCnpj(CNPJ);
+        assertTrue(empresa.isPresent());
     }
 
     @Test

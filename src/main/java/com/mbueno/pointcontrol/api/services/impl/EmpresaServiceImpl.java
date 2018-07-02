@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class EmpresaServiceImpl implements EmpresaService {
 
@@ -17,9 +19,9 @@ public class EmpresaServiceImpl implements EmpresaService {
     private EmpresaRepository empresaRepository;
 
     @Override
-    public Empresa buscarPorCnpj(String cnpj) {
+    public Optional<Empresa> buscarPorCnpj(String cnpj) {
         log.info("Buscando uma empresa por CNPJ {}", cnpj);
-        return empresaRepository.findByCnpj(cnpj);
+        return Optional.ofNullable(empresaRepository.findByCnpj(cnpj));
     }
 
     @Override

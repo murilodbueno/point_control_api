@@ -49,14 +49,14 @@ public class FuncionarioServiceTest {
 
     @Test
     public void testBuscarFuncionarioPorCpf(){
-        Funcionario funcionario = funcionarioService.buscarPorCpf(CPF);
-        assertNotNull(funcionario);
+        Optional<Funcionario> funcionario = funcionarioService.buscarPorCpf(CPF);
+        assertTrue(funcionario.isPresent());
     }
 
     @Test
     public void testBuscarFuncionarioPorEmail(){
-        Funcionario funcionario = funcionarioService.buscarPorEmail(EMAIL);
-        assertNotNull(funcionario);
+        Optional<Funcionario> funcionario = funcionarioService.buscarPorEmail(EMAIL);
+        assertTrue(funcionario.isPresent());
     }
 
     @Test

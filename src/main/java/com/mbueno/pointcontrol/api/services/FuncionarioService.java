@@ -17,14 +17,14 @@ public interface FuncionarioService {
      * @param cpf
      * @return Funcionario
      */
-    Funcionario buscarPorCpf(String cpf);
+    Optional<Funcionario> buscarPorCpf(String cpf);
 
     /**
      * Busca funcionario por email
      * @param email
      * @return Funcionario
      */
-    Funcionario buscarPorEmail(String email);
+    Optional<Funcionario> buscarPorEmail(String email);
 
     /**
      * Busca funcionario por id
