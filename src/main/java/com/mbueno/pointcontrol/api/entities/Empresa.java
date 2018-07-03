@@ -9,17 +9,20 @@ import java.util.List;
 @Table(name = "empresa")
 public class Empresa implements Serializable {
 
+	private static final long serialVersionUID = 3960436649365666213L;
+
 	private Long id;
 	private String razaoSocial;
 	private String cnpj;
 	private Date dataCriacao;
 	private Date dataAtualizacao;
 	private List<Funcionario> funcionarios;
-	
-	public Empresa() {}
+
+	public Empresa() {
+	}
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	public Long getId() {
 		return id;
 	}
@@ -74,7 +77,20 @@ public class Empresa implements Serializable {
 	}
 
 	@PreUpdate
-	public void preUpdate(){
+	public void preUpdate() {
 		dataAtualizacao = new Date();
+	}
+
+	@PrePersist
+	public void prePersist() {
+		final Date atual = new Date();
+		dataCriacao = atual;
+		dataAtualizacao = atual;
+	}
+
+	@Override
+	public String toString() {
+		return "Empresa [id=" + id + ", razaoSocial=" + razaoSocial + ", cnpj=" + cnpj + ", dataCriacao=" + dataCriacao
+				+ ", dataAtualizacao=" + dataAtualizacao + "]";
 	}
 }

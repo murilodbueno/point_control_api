@@ -10,6 +10,8 @@ import java.util.Date;
 @Table(name = "lancamento")
 public class Lancamento implements Serializable {
 
+    private static final long serialVersionUID = 6524560251526772839L;
+
     private Long id;
     private Date data;
     private String descricao;
@@ -19,10 +21,11 @@ public class Lancamento implements Serializable {
     private TipoEnum tipo;
     private Funcionario funcionario;
 
-    public Lancamento(){}
+    public Lancamento() {
+    }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     public Long getId() {
         return id;
     }
@@ -41,7 +44,7 @@ public class Lancamento implements Serializable {
         this.data = data;
     }
 
-    @Column(name = "descricao", nullable = false)
+    @Column(name = "descricao", nullable = true)
     public String getDescricao() {
         return descricao;
     }
@@ -50,7 +53,7 @@ public class Lancamento implements Serializable {
         this.descricao = descricao;
     }
 
-    @Column(name = "localizacao", nullable = false)
+    @Column(name = "localizacao", nullable = true)
     public String getLocalizacao() {
         return localizacao;
     }
@@ -97,21 +100,22 @@ public class Lancamento implements Serializable {
     }
 
     @PreUpdate
-    public void preUpdate(){
+    public void preUpdate() {
         dataAtualizacao = new Date();
     }
 
     @PrePersist
-    public void prePersist(){
+    public void prePersist() {
         final Date atual = new Date();
         dataCriacao = atual;
         dataAtualizacao = atual;
     }
 
     @Override
-    public String toString(){
-        return "Lancamento [id="+ id + "data=" + data + "descricao=" + descricao + "localizacao=" + localizacao +
-               "dataCriacao=" + dataCriacao + "dataAtualizacao=" + dataAtualizacao + "tipo=" + tipo +
-               "funcionario=" + funcionario + "]";
+    public String toString() {
+        return "Lancamento [id=" + id + ", data=" + data + ", descricao=" + descricao + ", localizacao=" + localizacao
+                + ", dataCriacao=" + dataCriacao + ", dataAtualizacao=" + dataAtualizacao + ", tipo=" + tipo
+                + ", funcionario=" + funcionario + "]";
     }
+
 }
