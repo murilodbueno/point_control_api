@@ -2,7 +2,6 @@ package com.mbueno.pointcontrol.api.controllers;
 
 import com.mbueno.pointcontrol.api.entities.Empresa;
 import com.mbueno.pointcontrol.api.services.EmpresaService;
-import org.hamcrest.CoreMatchers;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.BDDMockito;

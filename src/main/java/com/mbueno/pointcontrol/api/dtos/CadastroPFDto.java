@@ -1,5 +1,6 @@
 package com.mbueno.pointcontrol.api.dtos;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.br.CNPJ;
 import org.hibernate.validator.constraints.br.CPF;
@@ -8,6 +9,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import java.util.Optional;
 
+@JsonInclude(JsonInclude.Include.NON_DEFAULT)
 public class CadastroPFDto {
 
     private Long id;

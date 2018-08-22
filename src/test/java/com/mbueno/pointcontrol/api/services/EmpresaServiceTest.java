@@ -15,6 +15,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Optional;
 
+import static junit.framework.Assert.assertNull;
 import static junit.framework.TestCase.assertNotNull;
 import static junit.framework.TestCase.assertTrue;
 
@@ -47,5 +48,11 @@ public class EmpresaServiceTest {
     public void testPersistirEmpresa(){
         Empresa empresa = empresaService.persistir(new Empresa());
         assertNotNull(empresa);
+    }
+
+    @Test
+    public void testCnpjInvalido(){
+        Optional<Empresa> empresa = empresaService.buscarPorCnpj("555555");
+        assertNull(null);
     }
 }
