@@ -28,37 +28,37 @@ public class FuncionarioControllerTest {
 
     @Test
     @WithMockUser
-    void testAtualizarFuncionarioNomeVazio(){
+    public void testAtualizarFuncionarioNomeVazio(){
 
     }
 
     @Test
     @WithMockUser
-    void testAtualizarFuncionarioEmailVazio(){
+    public void testAtualizarFuncionarioEmailVazio(){
 
     }
 
     @Test
     @WithMockUser
-    void testAtualizarFuncionarioEmailInvalido(){
+    public void testAtualizarFuncionarioEmailInvalido(){
 
     }
 
     @Test
     @WithMockUser
-    void testAtualizarFuncionarioIdInexistente(){
+    public void testAtualizarFuncionarioIdInexistente(){
 
     }
 
     @Test
     @WithMockUser
-    void testeAtualizarFuncionarioEmailJaCadastrado(){
+    public void testeAtualizarFuncionarioEmailJaCadastrado(){
 
     }
 
     @Test
     @WithMockUser
-    void testAtualizarFuncionarioIdExistente(){
+    public void testAtualizarFuncionarioIdExistente(){
 
     }
 
