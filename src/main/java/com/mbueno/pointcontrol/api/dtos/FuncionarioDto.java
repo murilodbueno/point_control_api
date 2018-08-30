@@ -18,7 +18,8 @@ public class FuncionarioDto {
     private Optional<String> qtdHorasTrabalhoDia = Optional.empty();
     private Optional<String> qtdHorasAlmoco = Optional.empty();
 
-    public FuncionarioDto(){}
+    public FuncionarioDto() {
+    }
 
     public Long getId() {
         return id;
@@ -82,8 +83,8 @@ public class FuncionarioDto {
     }
 
     @Override
-    public String toString(){
-        return "FuncionarioDto [id="+ id + ", nome=" + nome + ", email=" + email + ", senha=" + senha +
+    public String toString() {
+        return "FuncionarioDto [id=" + id + ", nome=" + nome + ", email=" + email + ", senha=" + senha +
                 ", valorHora=" + valorHora + ", qtdHorasTrabalhoDia=" + qtdHorasTrabalhoDia +
                 ", qtdHorasAlmoco=" + qtdHorasAlmoco + "]";
     }

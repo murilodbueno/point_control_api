@@ -34,15 +34,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ActiveProfiles("test")
 public class CadastroPFControllerTest {
 
-    @Autowired
-    private MockMvc mvc;
-
-    @MockBean
-    private FuncionarioService funcionarioService;
-
-    @MockBean
-    private EmpresaService empresaService;
-
     //data for employee
     private static final String CADASTRAR_PF = "/api/cadastrar-pf";
     private static final Long ID_FUNCIONARIO = 1L;
@@ -54,10 +45,16 @@ public class CadastroPFControllerTest {
     private static final String CNPJ = "24218462000148";
     private static final String RAZAO_SOCIAL = "Empresa XYZ";
     private static final Long ID_EMPRESA = 1L;
+    @Autowired
+    private MockMvc mvc;
+    @MockBean
+    private FuncionarioService funcionarioService;
+    @MockBean
+    private EmpresaService empresaService;
 
     @Test
     @WithMockUser
-    public void testePersistirFuncionario() throws Exception{
+    public void testePersistirFuncionario() throws Exception {
         Funcionario funcionario = obterDadosFuncionario();
         BDDMockito.given(this.empresaService.buscarPorCnpj(Mockito.anyString())).willReturn(Optional.of(this.obterDadosEmpresa()));
         BDDMockito.given(this.funcionarioService.buscarPorCpf(Mockito.anyString())).willReturn(Optional.empty());
@@ -78,7 +75,7 @@ public class CadastroPFControllerTest {
                 .andExpect(jsonPath("$.errors").isEmpty());
     }
 
-    private Funcionario obterDadosFuncionario(){
+    private Funcionario obterDadosFuncionario() {
         Funcionario funcionario = new Funcionario();
         funcionario.setId(ID_FUNCIONARIO);
         funcionario.setNome(NOME);
@@ -89,7 +86,7 @@ public class CadastroPFControllerTest {
         return funcionario;
     }
 
-    private Empresa obterDadosEmpresa(){
+    private Empresa obterDadosEmpresa() {
         Empresa empresa = new Empresa();
         empresa.setId(ID_EMPRESA);
         empresa.setCnpj(CNPJ);

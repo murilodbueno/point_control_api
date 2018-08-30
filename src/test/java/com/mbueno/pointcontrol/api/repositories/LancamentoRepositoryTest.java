@@ -22,7 +22,7 @@ import static org.junit.Assert.assertEquals;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @ActiveProfiles("test")
-public class LancamentoRepositoryTest extends DataForTests{
+public class LancamentoRepositoryTest extends DataForTests {
 
     @Autowired
     private FuncionarioRepository funcionarioRepository;
@@ -36,7 +36,7 @@ public class LancamentoRepositoryTest extends DataForTests{
     private long funcionarioId;
 
     @Before
-    public void setUp(){
+    public void setUp() {
         Empresa empresa = this.empresaRepository.save(obterDadosEmpresa());
 
         Funcionario funcionario = this.funcionarioRepository.save(obterDadosFuncionario(empresa));
@@ -47,21 +47,21 @@ public class LancamentoRepositoryTest extends DataForTests{
     }
 
     @After
-    public void tearDown() throws Exception{
+    public void tearDown() throws Exception {
         this.empresaRepository.deleteAll();
         this.funcionarioRepository.deleteAll();
         this.lancamentoRepository.deleteAll();
     }
 
     @Test
-    public void testBuscarLancamentosPorFuncionarioId(){
+    public void testBuscarLancamentosPorFuncionarioId() {
         List<Lancamento> lancamentos = this.lancamentoRepository.findByFuncionarioId(funcionarioId);
         assertEquals(2, lancamentos.size());
     }
 
     @Test
-    public void testBuscarLancamentosPorFuncionarioIdPaginado(){
-        PageRequest page = new PageRequest(0,10);
+    public void testBuscarLancamentosPorFuncionarioIdPaginado() {
+        PageRequest page = new PageRequest(0, 10);
         Page<Lancamento> lancamentos = this.lancamentoRepository.findByFuncionarioId(funcionarioId, page);
         assertEquals(2, lancamentos.getTotalElements());
     }

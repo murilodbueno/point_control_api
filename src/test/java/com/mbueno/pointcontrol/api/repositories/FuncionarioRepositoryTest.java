@@ -18,7 +18,7 @@ import static org.junit.Assert.assertNotNull;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @ActiveProfiles("test")
-public class FuncionarioRepositoryTest extends DataForTests{
+public class FuncionarioRepositoryTest extends DataForTests {
 
     @Autowired
     private FuncionarioRepository funcionarioRepository;
@@ -27,43 +27,43 @@ public class FuncionarioRepositoryTest extends DataForTests{
     private EmpresaRepository empresaRepository;
 
     @Before
-    public void setUp() throws Exception{
+    public void setUp() throws Exception {
         Empresa empresa = this.empresaRepository.save(obterDadosEmpresa());
         this.funcionarioRepository.save(obterDadosFuncionario(empresa));
     }
 
     @After
-    public final void tearDown(){
+    public final void tearDown() {
         this.empresaRepository.deleteAll();
         this.funcionarioRepository.deleteAll();
     }
 
     @Test
-    public void testBuscarFuncionarioPorEmail(){
+    public void testBuscarFuncionarioPorEmail() {
         Funcionario funcionario = this.funcionarioRepository.findByEmail(EMAIL);
         assertEquals(EMAIL, funcionario.getEmail());
     }
 
     @Test
-    public void testBuscarFuncionarioPorCpf(){
+    public void testBuscarFuncionarioPorCpf() {
         Funcionario funcionario = this.funcionarioRepository.findByCpf(CPF);
         assertEquals(CPF, funcionario.getCpf());
     }
 
     @Test
-    public void testBuscarFuncionarioPorEmailECpf(){
+    public void testBuscarFuncionarioPorEmailECpf() {
         Funcionario funcionario = this.funcionarioRepository.findByCpfOrEmail(CPF, EMAIL);
         assertNotNull(funcionario);
     }
 
     @Test
-    public void testBuscarFuncionarioPorEmailOuCpfParaEmailInvalido(){
+    public void testBuscarFuncionarioPorEmailOuCpfParaEmailInvalido() {
         Funcionario funcionario = this.funcionarioRepository.findByCpfOrEmail(CPF, "email_invalido@email.com");
         assertNotNull(funcionario);
     }
 
     @Test
-    public void testBuscarFuncionarioPorEmailOuCpfParaCpfInvalido(){
+    public void testBuscarFuncionarioPorEmailOuCpfParaCpfInvalido() {
         Funcionario funcionario = this.funcionarioRepository.findByCpfOrEmail("123456789", EMAIL);
         assertNotNull(funcionario);
     }

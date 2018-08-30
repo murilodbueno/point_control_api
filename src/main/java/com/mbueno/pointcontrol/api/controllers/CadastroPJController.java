@@ -31,7 +31,8 @@ public class CadastroPJController {
     @Autowired
     private EmpresaService empresaService;
 
-    public CadastroPJController(){}
+    public CadastroPJController() {
+    }
 
     @PostMapping
     public ResponseEntity<Response<CadastroPJDto>> cadastrar(@Valid @RequestBody CadastroPJDto cadastroPJDto,

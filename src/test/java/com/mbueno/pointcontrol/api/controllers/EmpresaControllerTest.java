@@ -29,16 +29,14 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ActiveProfiles("test")
 public class EmpresaControllerTest {
 
-    @Autowired
-    private MockMvc mvc;
-
-    @MockBean
-    private EmpresaService empresaService;
-
     private static final String BUSCAR_EMPRESA_CNPJ_URL = "/api/empresas/cnpj/";
     private static final Long ID = Long.valueOf(1);
     private static final String CNPJ = "51463645000100";
     private static final String RAZAO_SOCIAL = "Empresa XYZ";
+    @Autowired
+    private MockMvc mvc;
+    @MockBean
+    private EmpresaService empresaService;
 
     @Test
     @WithMockUser

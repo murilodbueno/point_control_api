@@ -7,6 +7,7 @@ import java.util.Optional;
 public interface FuncionarioService {
     /**
      * Persiste um funcionário na base de dados
+     *
      * @param funcionario
      * @return Funcionario
      */
@@ -14,6 +15,7 @@ public interface FuncionarioService {
 
     /**
      * Busca funcionario por CPF
+     *
      * @param cpf
      * @return Funcionario
      */
@@ -21,6 +23,7 @@ public interface FuncionarioService {
 
     /**
      * Busca funcionario por email
+     *
      * @param email
      * @return Funcionario
      */
@@ -28,6 +31,7 @@ public interface FuncionarioService {
 
     /**
      * Busca funcionario por id
+     *
      * @param id
      * @return Funcionario
      */

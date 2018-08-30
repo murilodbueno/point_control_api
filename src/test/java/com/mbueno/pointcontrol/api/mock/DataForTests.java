@@ -16,9 +16,10 @@ public class DataForTests {
     public static final String CPF = "24291173474";
     public static final String CNPJ = "51463645000100";
 
-    public DataForTests(){}
+    public DataForTests() {
+    }
 
-    public Funcionario obterDadosFuncionario(Empresa empresa){
+    public Funcionario obterDadosFuncionario(Empresa empresa) {
         Funcionario funcionario = new Funcionario();
         funcionario.setCpf(CPF);
         funcionario.setPerfil(PerfilEnum.ROLE_USUARIO);
@@ -34,7 +35,7 @@ public class DataForTests {
         return funcionario;
     }
 
-    public Empresa obterDadosEmpresa(){
+    public Empresa obterDadosEmpresa() {
         Empresa empresa = new Empresa();
         empresa.setRazaoSocial("Empresa para teste");
         empresa.setCnpj(CNPJ);
@@ -43,7 +44,7 @@ public class DataForTests {
         return empresa;
     }
 
-    public Lancamento obterDadosLancamento(Funcionario funcionario){
+    public Lancamento obterDadosLancamento(Funcionario funcionario) {
         Lancamento lancamento = new Lancamento();
         lancamento.setData(new Date());
         lancamento.setDescricao("Almoço");

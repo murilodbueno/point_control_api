@@ -9,6 +9,7 @@ import java.util.Optional;
 public interface LancamentoService {
     /**
      * Persiste Lancamento na base de dados
+     *
      * @param lancamento
      * @return Lancamento
      */
@@ -16,6 +17,7 @@ public interface LancamentoService {
 
     /**
      * Busca um lancamento na base de dados pelo id
+     *
      * @param id
      * @return Lancamento
      */
@@ -23,6 +25,7 @@ public interface LancamentoService {
 
     /**
      * Retorna uma lista paginada de lancamentos de um determinado funcionario
+     *
      * @param funcionarioId
      * @param pageRequest
      * @return
@@ -31,6 +34,7 @@ public interface LancamentoService {
 
     /**
      * Remove Lancamento da base de dados
+     *
      * @param id
      */
     void remover(Long id);

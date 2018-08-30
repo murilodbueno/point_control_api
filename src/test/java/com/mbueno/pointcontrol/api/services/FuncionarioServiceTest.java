@@ -24,17 +24,15 @@ import static org.junit.Assert.assertTrue;
 @ActiveProfiles("test")
 public class FuncionarioServiceTest {
 
+    private static final String EMAIL = "email@email.com";
+    private static final String CPF = "24291173474";
     @MockBean
     FuncionarioRepository funcionarioRepository;
-
     @Autowired
     FuncionarioServiceImpl funcionarioService;
 
-    private static final String EMAIL = "email@email.com";
-    private static final String CPF = "24291173474";
-
     @Before
-    public void setUp(){
+    public void setUp() {
         BDDMockito.given(funcionarioRepository.save(Mockito.any(Funcionario.class))).willReturn(new Funcionario());
         BDDMockito.given(funcionarioRepository.findByCpf(Mockito.anyString())).willReturn(new Funcionario());
         BDDMockito.given(funcionarioRepository.findByEmail(Mockito.anyString())).willReturn(new Funcionario());
@@ -42,25 +40,25 @@ public class FuncionarioServiceTest {
     }
 
     @Test
-    public void testPersistirFuncionario(){
+    public void testPersistirFuncionario() {
         Funcionario funcionario = funcionarioService.persistir(new Funcionario());
         assertNotNull(funcionario);
     }
 
     @Test
-    public void testBuscarFuncionarioPorCpf(){
+    public void testBuscarFuncionarioPorCpf() {
         Optional<Funcionario> funcionario = funcionarioService.buscarPorCpf(CPF);
         assertTrue(funcionario.isPresent());
     }
 
     @Test
-    public void testBuscarFuncionarioPorEmail(){
+    public void testBuscarFuncionarioPorEmail() {
         Optional<Funcionario> funcionario = funcionarioService.buscarPorEmail(EMAIL);
         assertTrue(funcionario.isPresent());
     }
 
     @Test
-    public void testBuscarFuncionarioPorId(){
+    public void testBuscarFuncionarioPorId() {
         Optional<Funcionario> funcionario = funcionarioService.buscarPorId(1L);
         assertTrue(funcionario.isPresent());
     }

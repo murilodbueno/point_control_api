@@ -24,34 +24,32 @@ import static junit.framework.TestCase.assertTrue;
 @ActiveProfiles("test")
 public class EmpresaServiceTest {
 
+    private static final String CNPJ = "51463645000100";
     @MockBean
     private EmpresaRepository empresaRepository;
-
     @Autowired
     private EmpresaService empresaService;
 
-    private static final String CNPJ = "51463645000100";
-
     @Before
-    public void setUp() throws Exception{
+    public void setUp() throws Exception {
         BDDMockito.given(empresaRepository.findByCnpj(Mockito.anyString())).willReturn(new Empresa());
         BDDMockito.given(empresaRepository.save(Mockito.any(Empresa.class))).willReturn(new Empresa());
     }
 
     @Test
-    public void testBuscarEmpresaPorCnpj(){
+    public void testBuscarEmpresaPorCnpj() {
         Optional<Empresa> empresa = empresaService.buscarPorCnpj(CNPJ);
         assertTrue(empresa.isPresent());
     }
 
     @Test
-    public void testPersistirEmpresa(){
+    public void testPersistirEmpresa() {
         Empresa empresa = empresaService.persistir(new Empresa());
         assertNotNull(empresa);
     }
 
     @Test
-    public void testCnpjInvalido(){
+    public void testCnpjInvalido() {
         Optional<Empresa> empresa = empresaService.buscarPorCnpj("555555");
         assertNull(null);
     }

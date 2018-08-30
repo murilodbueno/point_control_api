@@ -34,7 +34,7 @@ public class LancamentoServiceTest {
     private LancamentoService lancamentoService;
 
     @Before
-    public void setUP(){
+    public void setUP() {
         BDDMockito.given(lancamentoRepository.save(Mockito.any(Lancamento.class))).willReturn(new Lancamento());
         BDDMockito.given(lancamentoRepository.findById(Mockito.anyLong()))
                 .willReturn(java.util.Optional.of(new Lancamento()));
@@ -43,21 +43,21 @@ public class LancamentoServiceTest {
     }
 
     @Test
-    public void testPersistirLancamento(){
+    public void testPersistirLancamento() {
         Lancamento lancamento = lancamentoService.persistir(new Lancamento());
         assertNotNull(lancamento);
     }
 
     @Test
-    public void testBuscarLancamentoPorId(){
+    public void testBuscarLancamentoPorId() {
         Optional<Lancamento> lancamento = lancamentoService.buscarPorId(1L);
         assertTrue(lancamento.isPresent());
     }
 
     @Test
-    public void testBuscarLancamentoPorFuncionarioId(){
+    public void testBuscarLancamentoPorFuncionarioId() {
         Page<Lancamento> lancamento =
-                lancamentoService.buscarPorIdFuncionario(1L, new PageRequest(0,10));
+                lancamentoService.buscarPorIdFuncionario(1L, new PageRequest(0, 10));
         assertNotNull(lancamento);
     }
 

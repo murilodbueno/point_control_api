@@ -16,7 +16,7 @@ public class PasswordUtilsTest {
     }
 
     @Test
-    public void testGerarHashSenha(){
+    public void testGerarHashSenha() {
         String hash = PasswordUtils.gerarBCrypt(SENHA);
         assertTrue(bCryptPasswordEncoder.matches(SENHA, hash));
     }

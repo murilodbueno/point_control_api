@@ -18,13 +18,13 @@ import static org.junit.Assert.assertEquals;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @ActiveProfiles("test")
-public class EmpresaRepositoryTest extends DataForTests{
+public class EmpresaRepositoryTest extends DataForTests {
 
     @Autowired
     private EmpresaRepository empresaRepository;
 
     @Before
-    public void setUp() throws Exception{
+    public void setUp() throws Exception {
         Empresa empresa = new Empresa();
         empresa.setRazaoSocial("Empresa para teste");
         empresa.setCnpj(CNPJ);
@@ -34,12 +34,12 @@ public class EmpresaRepositoryTest extends DataForTests{
     }
 
     @After
-    public final void tearDown(){
+    public final void tearDown() {
         this.empresaRepository.deleteAll();
     }
 
     @Test
-    public void testBuscarPorCnpj(){
+    public void testBuscarPorCnpj() {
         Empresa empresa = this.empresaRepository.findByCnpj(CNPJ);
 
         assertEquals(CNPJ, empresa.getCnpj());

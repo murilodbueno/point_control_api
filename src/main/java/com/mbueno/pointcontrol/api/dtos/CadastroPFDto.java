@@ -45,7 +45,7 @@ public class CadastroPFDto {
 
     @NotEmpty(message = "Email não pode ser vazio.")
     @Length(min = 5, max = 200, message = "Email deve conter entre 5 e 200 caracteres.")
-    @Email(message="Email inválido.")
+    @Email(message = "Email inválido.")
     public String getEmail() {
         return email;
     }
@@ -64,7 +64,7 @@ public class CadastroPFDto {
     }
 
     @NotEmpty(message = "CPF não pode ser vazio.")
-    @CPF(message="CPF inválido")
+    @CPF(message = "CPF inválido")
     public String getCpf() {
         return cpf;
     }
@@ -98,7 +98,7 @@ public class CadastroPFDto {
     }
 
     @NotEmpty(message = "CNPJ não pode ser vazio.")
-    @CNPJ(message="CNPJ inválido.")
+    @CNPJ(message = "CNPJ inválido.")
     public String getCnpj() {
         return cnpj;
     }

@@ -7,18 +7,19 @@ public class Response<T> {
     private T data;
     private List<String> errors;
 
-    public Response(){}
+    public Response() {
+    }
 
-    public T getData(){
+    public T getData() {
         return data;
     }
 
-    public void setData(T data){
+    public void setData(T data) {
         this.data = data;
     }
 
     public List<String> getErrors() {
-        if(this.errors == null){
+        if (this.errors == null) {
             this.errors = new ArrayList<>();
         }
         return errors;

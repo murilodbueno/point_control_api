@@ -8,15 +8,17 @@ public class PasswordUtils {
 
     private static final Logger log = LoggerFactory.getLogger(PasswordUtils.class);
 
-    public PasswordUtils(){}
+    public PasswordUtils() {
+    }
 
     /**
      * Generate a hash to password using BCrypt
+     *
      * @param senha
      * @return String
      */
-    public static String gerarBCrypt(String senha){
-        if(senha == null){
+    public static String gerarBCrypt(String senha) {
+        if (senha == null) {
             return senha;
         }
         log.info("Gerando has com BCrypt");

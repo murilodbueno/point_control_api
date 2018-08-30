@@ -34,7 +34,7 @@ public class FuncionarioController {
      * @param id
      * @param funcionarioDto
      * @param result
-     * @return
+     * @return ResponseEntity<Response < FuncionarioDto>>
      * @throws NoSuchAlgorithmException
      */
     @PutMapping(value = "/{id}")
@@ -45,13 +45,13 @@ public class FuncionarioController {
         Response<FuncionarioDto> response = new Response<>();
 
         Optional<Funcionario> funcionario = funcionarioService.buscarPorId(id);
-        if(!funcionario.isPresent()){
+        if (!funcionario.isPresent()) {
             result.addError(new ObjectError("funcionario", "Funcionário não encontrado."));
         }
 
         atualizarDadosFuncionario(funcionario.get(), funcionarioDto, result);
 
-        if(result.hasErrors()){
+        if (result.hasErrors()) {
             log.info("Erro validando funcionario: {}", result.getAllErrors());
             result.getAllErrors().forEach(erro -> response.getErrors().add(erro.getDefaultMessage()));
             return ResponseEntity.badRequest().body(response);
@@ -68,10 +68,11 @@ public class FuncionarioController {
      * @param funcionarioDto
      * @param result
      */
-    private void atualizarDadosFuncionario(Funcionario funcionario, FuncionarioDto funcionarioDto, BindingResult result){
+    private void atualizarDadosFuncionario(Funcionario funcionario, FuncionarioDto funcionarioDto, BindingResult result)
+            throws NoSuchAlgorithmException {
         funcionario.setNome(funcionarioDto.getNome());
 
-        if(!funcionario.getEmail().equals(funcionarioDto.getEmail())){
+        if (!funcionario.getEmail().equals(funcionarioDto.getEmail())) {
             funcionarioService.buscarPorEmail(funcionarioDto.getEmail())
                     .ifPresent(func -> result.addError(
                             new ObjectError("funcionario", "E-mail já existente.")));
@@ -103,7 +104,7 @@ public class FuncionarioController {
      * @param funcionario
      * @return FuncionarioDto
      */
-    private FuncionarioDto convertFuncionarioDto(Funcionario funcionario){
+    private FuncionarioDto convertFuncionarioDto(Funcionario funcionario) {
         FuncionarioDto funcionarioDto = new FuncionarioDto();
         funcionarioDto.setId(funcionario.getId());
         funcionarioDto.setNome(funcionario.getNome());

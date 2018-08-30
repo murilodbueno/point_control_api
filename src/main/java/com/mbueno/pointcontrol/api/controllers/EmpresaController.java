@@ -29,7 +29,7 @@ public class EmpresaController {
      * Retorna uma empresa dado um CNPJ.
      *
      * @param cnpj
-     * @return ResponseEntity<Response<EmpresaDto>>
+     * @return ResponseEntity<Response < EmpresaDto>>
      */
     @GetMapping(value = "/cnpj/{cnpj}")
     public ResponseEntity<Response<EmpresaDto>> buscarPorCnpj(@PathVariable("cnpj") String cnpj) {

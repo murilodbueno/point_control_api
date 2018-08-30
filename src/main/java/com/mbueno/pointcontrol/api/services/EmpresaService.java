@@ -8,6 +8,7 @@ public interface EmpresaService {
 
     /**
      * Retorna uma empresa dado um CNPJ
+     *
      * @param cnpj
      * @return Optional<Empresa>
      */
@@ -15,6 +16,7 @@ public interface EmpresaService {
 
     /**
      * Cadastra uma nova empresa na base de dados
+     *
      * @param empresa
      * @return Optional<Empresa>
      */
