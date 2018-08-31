@@ -4,7 +4,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mbueno.pointcontrol.api.dtos.FuncionarioDto;
 import com.mbueno.pointcontrol.api.entities.Funcionario;
+import com.mbueno.pointcontrol.api.repositories.FuncionarioRepository;
 import com.mbueno.pointcontrol.api.services.FuncionarioService;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.BDDMockito;
@@ -20,6 +22,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import javax.swing.text.html.Option;
 import java.util.Optional;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -36,8 +39,10 @@ public class FuncionarioControllerTest {
     private static final String NOME = "Funcionario 1";
     private static final String EMAIL = "funcionario@teste.com";
     private static final String CPF = "01919155058";
+
     @Autowired
     private MockMvc mvc;
+
     @MockBean
     private FuncionarioService funcionarioService;
 
@@ -46,6 +51,7 @@ public class FuncionarioControllerTest {
     public void testAtualizarFuncionarioNomeVazio() throws Exception {
         Funcionario funcionario = obterFuncionario();
         funcionario.setNome(null);
+
         BDDMockito.given(this.funcionarioService.buscarPorId(Mockito.anyLong())).willReturn(Optional.of(obterFuncionario()));
 
         mvc.perform(MockMvcRequestBuilders.put(URL_BUSCAR_FUNCIONARIOS + ID)
@@ -76,25 +82,39 @@ public class FuncionarioControllerTest {
 
     @Test
     @WithMockUser
-    public void testAtualizarFuncionarioEmailInvalido() {
+    public void testAtualizarFuncionarioEmailInvalido() throws Exception {
+        Funcionario funcionario = obterFuncionario();
+        funcionario.setEmail("a873/*3/4d23dss23/232*-/*-2/*2dd");
+
+        BDDMockito.given(funcionarioService.buscarPorId(Mockito.anyLong())).willReturn(Optional.of(obterFuncionario()));
+
+        mvc.perform(MockMvcRequestBuilders.put(URL_BUSCAR_FUNCIONARIOS + ID)
+                .content(this.obterJsonRequisicaoPost(funcionario))
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.data").isEmpty())
+                .andExpect(jsonPath("$.errors").value("E-mail inválido."));
 
     }
 
     @Test
     @WithMockUser
-    public void testAtualizarFuncionarioIdInexistente() {
-
+    public void testAtualizarFuncionarioIdInexistente() throws Exception{
+//        BDDMockito.given(funcionarioService.buscarPorId(Mockito.anyLong())).willReturn(Optional.of(obterFuncionario()));
+//
+//        mvc.perform(MockMvcRequestBuilders.put(URL_BUSCAR_FUNCIONARIOS + 9999)
+//                .contentType(MediaType.APPLICATION_JSON)
+//                .content(obterJsonRequisicaoPost(obterFuncionario()))
+//                .accept(MediaType.APPLICATION_JSON))
+//                .andExpect(status().isBadRequest())
+//                .andExpect(jsonPath("$.data").isEmpty())
+//                .andExpect(jsonPath("$.errors").value("Funcionário não encontrado."));
     }
 
     @Test
     @WithMockUser
     public void testeAtualizarFuncionarioEmailJaCadastrado() {
-
-    }
-
-    @Test
-    @WithMockUser
-    public void testAtualizarFuncionarioIdExistente() {
 
     }
 

@@ -45,20 +45,33 @@ public class FuncionarioController {
         Response<FuncionarioDto> response = new Response<>();
 
         Optional<Funcionario> funcionario = funcionarioService.buscarPorId(id);
+
         if (!funcionario.isPresent()) {
             result.addError(new ObjectError("funcionario", "Funcionário não encontrado."));
+            return getResponseResponseEntity(result, response);
         }
 
         atualizarDadosFuncionario(funcionario.get(), funcionarioDto, result);
 
         if (result.hasErrors()) {
             log.info("Erro validando funcionario: {}", result.getAllErrors());
-            result.getAllErrors().forEach(erro -> response.getErrors().add(erro.getDefaultMessage()));
-            return ResponseEntity.badRequest().body(response);
+            return getResponseResponseEntity(result, response);
         }
         funcionarioService.persistir(funcionario.get());
         response.setData(convertFuncionarioDto(funcionario.get()));
         return ResponseEntity.ok(response);
+    }
+
+    /**
+     * Método que irá adicionar os erros no response e retornar a requisição
+     *
+     * @param result
+     * @param response
+     * @return
+     */
+    private ResponseEntity<Response<FuncionarioDto>> getResponseResponseEntity(BindingResult result, Response<FuncionarioDto> response) {
+        result.getAllErrors().forEach(erro -> response.getErrors().add(erro.getDefaultMessage()));
+        return ResponseEntity.badRequest().body(response);
     }
 
     /**
