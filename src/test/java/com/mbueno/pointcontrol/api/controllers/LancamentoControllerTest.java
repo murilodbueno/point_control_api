@@ -34,7 +34,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@AutoConfigureMockMvc(secure = false) //remove after jwt
+@AutoConfigureMockMvc
 @ActiveProfiles("test")
 public class LancamentoControllerTest {
 
@@ -100,7 +100,6 @@ public class LancamentoControllerTest {
 
     @Test
     @WithMockUser
-    @Ignore
     public void testRemoverLancamentoAcessoNegado() throws Exception {
         BDDMockito.given(this.lancamentoService.buscarPorId(Mockito.anyLong())).willReturn(Optional.of(new Lancamento()));
 
